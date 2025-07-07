@@ -1,0 +1,18 @@
+0 verbose cli /home/felipe/.nvm/versions/node/v22.17.0/bin/node /home/felipe/.nvm/versions/node/v22.17.0/bin/npm
+1 info using npm@11.4.2
+2 info using node@v22.17.0
+3 silly config load:file:/home/felipe/.nvm/versions/node/v22.17.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/felipe/php/blastmail/.npmrc
+5 silly config load:file:/home/felipe/.npmrc
+6 silly config load:file:/home/felipe/.nvm/versions/node/v22.17.0/etc/npmrc
+7 verbose title npm run build
+8 verbose argv "run" "build"
+9 verbose logfile logs-max:10 dir:/home/felipe/.npm/_logs/2025-07-03T16_22_29_434Z-
+10 verbose logfile /home/felipe/.npm/_logs/2025-07-03T16_22_29_434Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /home/felipe/php/blastmail
+13 verbose os Linux 6.6.87.2-microsoft-standard-WSL2
+14 verbose node v22.17.0
+15 verbose npm  v11.4.2
+16 verbose exit 0
+17 info ok
