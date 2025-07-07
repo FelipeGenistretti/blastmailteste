@@ -22,7 +22,7 @@ class ListController extends Controller
      */
     public function create()
     {
-        //
+        return view('email-list.create');
     }
 
     /**

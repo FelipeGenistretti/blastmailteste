@@ -1,19 +1,37 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-h2>
-            {{__('Email List')}}
-        </x-h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Email List') }}
+        </h2>
     </x-slot>
-    <x-card>
-        @forelse($EmailList as $list)
-            <!-- Aqui deve entrar o conteúdo para cada $list -->
-            @empty
-                <div class="flex justify-center">
-                    <a href="{{ route('email-list.create') }}" 
-                        class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                        {{ __('Create your first email list') }}
-                    </a>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    
+                    <!-- Botão sempre visível -->
+                    <div class="flex justify-end mb-4">
+                        <a href="{{ route('email-list.create') }}"
+                            class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition shadow-md">
+                            {{ __('Create new email list') }}
+                        </a>
+
+                    </div>
+
+                    <!-- Listagem -->
+                    @forelse($EmailList as $list)
+                        <div class="p-4 border-b border-gray-300">
+                            {{ $list->nome ?? 'Sem nome definido' }}
+                        </div>
+                    @empty
+                        <div class="text-center text-gray-400">
+                            {{ __('No email lists found.') }}
+                        </div>
+                    @endforelse
+
                 </div>
-            @endforelse
-    </x-card>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

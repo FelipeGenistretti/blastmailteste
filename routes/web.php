@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/email-list", [ListController::class, 'index'])->name('email-list.index');
 
+    Route::get('/email-list/create', [ListController::class, 'create'])->name('email-list.create');
+
+
 });
 
 require __DIR__.'/auth.php';
