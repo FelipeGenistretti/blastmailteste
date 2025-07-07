@@ -1,20 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Email List') }}
-        </h2>
+        <x-h2>
+            {{__('Email List')}}
+        </x-h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @forelse($EmailList as $list)
-                        @empty
-                            Nao tem nada 
-                    @endforelse
+    <x-card>
+        @forelse($EmailList as $list)
+            <!-- Aqui deve entrar o conteúdo para cada $list -->
+            @empty
+                <div class="flex justify-center">
+                    <a href="{{ route('email-list.create') }}" 
+                        class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                        {{ __('Create your first email list') }}
+                    </a>
                 </div>
-            </div>
-        </div>
-    </div>
+            @endforelse
+    </x-card>
 </x-app-layout>
