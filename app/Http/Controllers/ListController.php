@@ -33,7 +33,23 @@ class ListController extends Controller
     {
         $data = $request->validated();
         
-        $file = $request->file("file");
+        $items = $this->getEmailsFromCsvFile($request->file('file'));
+
+        $emailList = DB::transaction(function() use ($request, $items){
+            $emailList = Lista::query()->create([
+                'title'=> $request->title
+            ]);
+        
+            $emailList->subscribers()->createMany($items);
+            return $emailList;
+        });
+        
+       
+        return to_route('email-list.index');
+    }
+
+    private function getEmailsFromCsvFile(UploadedFile $file):array{
+        
         $fileHandler = fopen($file->getRealPath(), 'r');
         $items = [];
         
@@ -41,19 +57,13 @@ class ListController extends Controller
             if($row[0]=='Name' && $row[1]=='Email'){
                 continue;
             }
-            
+
             $items[] = [
                 'name'=>$row[0],
                 'email'=>$row[1]
             ];
         }
         fclose($fileHandler);
-        
-        $emailList = Lista::query()->create([
-            'title'=> $request->title
-        ]);
-        $emailList->subscribers()->createMany($items);
-        return to_route('email-list.index');
     }
 
     /**
