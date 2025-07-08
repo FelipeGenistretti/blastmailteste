@@ -23,7 +23,7 @@ class StoreListaRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255'],
-            'file' => ['required', 'file']
+            'file' => ['required', 'file', 'mimes:csv']
         ];
     }
 }

@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lista extends Model
+class Subscriber extends Model
 {
     use HasFactory;
-
-    public function subscribers():HasMany{
-        return $this->hasMany(Subscriber::class);
-    }
 }

@@ -32,8 +32,27 @@ class ListController extends Controller
     public function store(StoreListaRequest $request)
     {
         $data = $request->validated();
-        Lista::query()->create($data);
-
+        
+        $file = $request->file("file");
+        $fileHandler = fopen($file->getRealPath(), 'r');
+        $items = [];
+        
+        while(($row = fgetcsv($fileHandler, null, ','))!==false){
+            if($row[0]=='Name' && $row[1]=='Email'){
+                continue;
+            }
+            
+            $items[] = [
+                'name'=>$row[0],
+                'email'=>$row[1]
+            ];
+        }
+        fclose($fileHandler);
+        
+        $emailList = Lista::query()->create([
+            'title'=> $request->title
+        ]);
+        $emailList->subscribers()->createMany($items);
         return to_route('email-list.index');
     }
 
