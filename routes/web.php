@@ -16,7 +16,10 @@ use App\Http\Controllers\ListController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Auth::loginUsingId(1);
+
+    return to_route('dashboard');
+
 });
 
 Route::get('/dashboard', function () {
@@ -31,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/email-list", [ListController::class, 'index'])->name('email-list.index');
 
     Route::get('/email-list/create', [ListController::class, 'create'])->name('email-list.create');
+    Route::post('/email-list', [ListController::class, 'store'])->name('email-list.store');
 
 
 });

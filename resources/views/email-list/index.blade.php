@@ -9,15 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    
-                    <!-- Botão sempre visível -->
-                    <div class="flex justify-end mb-4">
-                        <a href="{{ route('email-list.create') }}"
-                            class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition shadow-md">
-                            {{ __('Create new email list') }}
-                        </a>
 
-                    </div>
+                    <form method="GET" action="{{ route('email-list.create') }}" class="flex justify-end mb-4">
+                        <button type="submit"
+                            class="px-4 py-2 bg-black text-white rounded hover:bg-gray-900 transition shadow-md !bg-black !text-white">
+                            {{ __('Create new email list') }}
+                        </button>
+                    </form>
 
                     <!-- Listagem -->
                     @forelse($EmailList as $list)

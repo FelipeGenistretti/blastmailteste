@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreListaRequest;
 use App\Models\Lista;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,12 @@ class ListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreListaRequest $request)
     {
-        //
+        $data = $request->validated();
+        Lista::query()->create($data);
+
+        return to_route('email-list.index');
     }
 
     /**
